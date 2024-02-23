@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="message">select ethier heads or tails</div>
+  <button type="button">heads</button>
+  <button type="button">tails</button>
+
+  <script>
+    const coinArray = ["heads", "tails"];
+    let score = [0, 0]
+    let message = document.querySelector(".message");
+    let buttons = document.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", tosscoin);
+    }
+    function tosscoin(e) {
+      let playerguess = e.target.innerHTML;
+      let computerguess = Math.floor(Math.random() * 2);
+      let computertoss = coinArray[computerguess];
+      var output;
+      if (playerguess === computertoss) {
+        output = "player win!";
+        score[0]++;
+      } else {
+        output = "computer win!";
+        score[1]++;
+      }
+      message.innerHTML = output + "<br/>player: " + score[0] + "  " + "computer: " + score[1];
+    }
+  </script>
+</body>
+
+</html>
